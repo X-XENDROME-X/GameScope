@@ -1,7 +1,7 @@
 <h1 align="center">GameScope 🎮</h1>
 
 <p align="center">
-  <img src="public/Rlogo.png" alt="GameScope Logo" width="300"/>
+  <img src="public/logo.png" alt="GameScope Logo" width="300"/>
 </p>
 
 GameScope is a comprehensive full-stack gaming discovery platform that transforms how gamers explore, discover, and curate their gaming experiences. Built with cutting-edge web technologies and modern architecture patterns, GameScope provides powerful game search capabilities, personal collection management, detailed game information, and administrative tools for the ultimate gaming discovery experience.
