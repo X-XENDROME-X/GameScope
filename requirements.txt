@@ -1,0 +1,87 @@
+# GameScope Requirements
+
+## System Requirements
+
+### Runtime Environment
+- Node.js >= 18.0.0 (LTS recommended)
+- npm >= 8.0.0 or yarn >= 1.22.0
+
+### Database
+- PostgreSQL >= 13.0 or compatible database service
+
+### External Services
+- Google OAuth 2.0 application (for user authentication)
+- Game database API access (for game data)
+- YouTube Data API v3 access (for game trailers and videos)
+
+## Core Dependencies
+
+### Framework & Runtime
+- Next.js 15.4.1+ (React framework with App Router)
+- React 19.1.0+ (Frontend library)
+- TypeScript 5+ (Type-safe JavaScript)
+
+### Database & Authentication
+- Drizzle ORM 0.44.3+ (Type-safe database toolkit)
+- NextAuth.js 4.24.11+ (Authentication solution)
+- PostgreSQL driver
+
+### State Management & Data Fetching
+- TanStack React Query 5.83.0+ (Server state management)
+- Zustand 5.0.6+ (Client state management)
+
+### UI & Styling
+- Tailwind CSS 4+ (Utility-first CSS framework)
+- Radix UI components (Accessible primitives)
+- Framer Motion 12.23.6+ (Animation library)
+- Lucide React 0.525.0+ (Icon library)
+
+### Development Tools
+- ESLint 9+ (Code linting)
+- Prettier 3.6.2+ (Code formatting)
+- Husky 9.1.7+ (Git hooks)
+- Drizzle Kit 0.31.4+ (Database management)
+
+## Environment Configuration
+
+### Required Environment Variables
+```
+# Database
+DATABASE_URL=postgresql://[user]:[password]@[host]:[port]/[database]
+
+# Authentication
+NEXTAUTH_SECRET=[secure-random-string]
+NEXTAUTH_URL=[application-url]
+
+# OAuth Providers
+GOOGLE_CLIENT_ID=[google-oauth-client-id]
+GOOGLE_CLIENT_SECRET=[google-oauth-client-secret]
+
+# External APIs
+RAWG_API_KEY=[game-database-api-key]
+YOUTUBE_API_KEY=[youtube-data-api-v3-key]
+
+# Admin
+ADMIN_EMAILS=[comma-separated-admin-emails]
+```
+
+## Setup Instructions
+
+1. **Install Node.js and npm** from https://nodejs.org
+2. **Setup Database** (PostgreSQL locally or cloud service)
+3. **Obtain API Keys**:
+   - Google Console: OAuth 2.0 credentials
+   - Game database API: Developer account and API key
+   - YouTube: Google Cloud Console API key
+4. **Configure Environment**: Copy .env.example to .env.local and fill in variables
+5. **Install Dependencies**: `npm install`
+6. **Database Setup**: `npm run db:generate && npm run db:push`
+7. **Start Development**: `npm run dev`
+
+## Browser Support
+- Chrome 88+, Firefox 84+, Safari 14+, Edge 88+
+- Chrome Mobile 88+, Safari iOS 14+
+
+---
+
+For detailed setup instructions and deployment guides, refer to the main README.md file.

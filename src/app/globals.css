@@ -1,0 +1,672 @@
+@import "tailwindcss";
+@import "../styles/toast.css";
+@import "../styles/navigation.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 94.1%;
+}
+
+/* Enhanced base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+p {
+  line-height: 1.75;
+}
+
+/* Component styles */
+.game-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.game-card:hover {
+  box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-0.25rem);
+}
+
+.dark .game-card {
+  background-color: #1f2937;
+}
+
+.game-card-image {
+  position: relative;
+  height: 12rem;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.dark .game-card-image {
+  background-color: #374151;
+}
+
+.game-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  transition: color 0.2s ease;
+}
+
+.game-card:hover .game-card-title {
+  color: #2563eb;
+}
+
+.dark .game-card-title {
+  color: white;
+}
+
+.game-card-description {
+  font-size: 0.875rem;
+  color: #4b5563;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  line-height: 1.5;
+}
+
+.dark .game-card-description {
+  color: #9ca3af;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.dark .badge-primary {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+.badge-secondary {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.dark .badge-secondary {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+.rating-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+.platform-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+}
+
+.dark .platform-icon {
+  color: #6b7280;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star-filled {
+  width: 1rem;
+  height: 1rem;
+  color: #f59e0b;
+  fill: currentColor;
+}
+
+.star-empty {
+  width: 1rem;
+  height: 1rem;
+  color: #d1d5db;
+}
+
+.dark .star-empty {
+  color: #4b5563;
+}
+
+/* Utility classes */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.glassmorphism {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glassmorphism {
+  background-color: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(31, 41, 55, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f3f4f6;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background-color: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
+}
+
+/* Custom scrollbar styles for Tailwind v4 */
+/* Custom scrollbar for webkit browsers */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 20px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.7);
+}
+
+.dark .scrollbar-thin {
+  scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(75, 85, 99, 0.5);
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(75, 85, 99, 0.7);
+}
+
+/* Loading animations */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background-color: #e5e7eb;
+  border-radius: 0.25rem;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+.dark .skeleton {
+  background-color: #374151;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* Gaming-themed animations */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbow-gradient {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 25% 50%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 75% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes logo-glow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+  }
+  50% { 
+    filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.8));
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% { 
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+  50% { 
+    text-shadow: 0 0 20px rgba(147, 51, 234, 0.8), 0 0 30px rgba(147, 51, 234, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+.animate-rainbow-gradient {
+  background-size: 300% 300%;
+  animation: rainbow-gradient 4s ease infinite;
+}
+
+/* Gaming-themed gradient variations */
+.gaming-gradient {
+  background: linear-gradient(
+    45deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #ffd93d,
+    #ff6b6b
+  );
+}
+
+.neon-gradient {
+  background: linear-gradient(
+    45deg,
+    #ff0080,
+    #00ffff,
+    #8000ff,
+    #ff4000,
+    #00ff80,
+    #ff0080
+  );
+}
+
+.logo-glow {
+  animation: logo-glow 2s ease-in-out infinite;
+}
+
+.text-glow {
+  animation: text-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animate-float.delay-1000 {
+  animation-delay: 1s;
+}
+
+.animate-float.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.animate-float.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 2s ease infinite;
+  }
+  
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  /* Ensure proper touch targets on mobile */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Enhance mobile game cards */
+  .game-card {
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.08);
+  }
+  
+  .game-card:hover {
+    transform: translateY(-2px); /* Reduced transform for mobile */
+    box-shadow: 0 4px 20px -3px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Mobile platform hover effects */
+  .platform-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  /* Enhanced text gradients for mobile */
+  .text-gradient {
+    background-size: 200% 200%;
+    animation: gradient 2s ease infinite;
+  }
+  
+  /* Mobile-specific star animations */
+  .animate-pulse {
+    animation-duration: 1.5s;
+  }
+  
+  /* Improved touch responsiveness */
+  .game-card-title {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Mobile dropdown optimization */
+  .mobile-dropdown {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Better spacing for tablets and mobile */
+  .hero-spacing {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  /* Tablet game grid improvements */
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Enhanced star positioning for tablets */
+  .star-container {
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* Tablet-friendly platform icons */
+  .platform-container {
+    padding: 0.75rem;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  /* Improved touch targets for dropdowns */
+  .dropdown-trigger {
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Better text sizing for tablets */
+  .hero-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  
+  /* Enhanced animations for tablet */
+  .animate-bounce {
+    animation-duration: 1.5s;
+  }
+}
+
+/* iPad specific optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ipad-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .ipad-hero {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  /* iPad-specific game card enhancements */
+  .game-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .game-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Enhanced star effects for iPad */
+  .star-decoration {
+    font-size: 1.75rem;
+    opacity: 0.7;
+  }
+  
+  .animate-float {
+    animation-duration: 2.5s;
+  }
+  
+  /* iPad platform hover improvements */
+  .platform-icon-ipad {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: all 0.3s ease;
+  }
+  
+  .platform-icon-ipad:hover {
+    transform: scale(1.1);
+  }
+  
+  /* iPad-optimized text gradients */
+  .text-gradient-ipad {
+    background-size: 300% 300%;
+    animation: gradient 3s ease infinite;
+  }
+  
+  /* Better modal sizing for iPad */
+  .modal-ipad {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  
+  /* Enhanced dropdown experience */
+  .dropdown-ipad {
+    min-width: 200px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Large tablets and small desktops */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  /* Optimize for large tablets in landscape */
+  .large-tablet-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  /* Enhanced hover effects */
+  .game-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 40px -6px rgba(0, 0, 0, 0.18);
+  }
+  
+  /* Better star positioning */
+  .star-large-tablet {
+    font-size: 2rem;
+    opacity: 0.6;
+  }
+}
+
+/* Ensure proper contrast on all devices */
+@media (prefers-color-scheme: dark) {
+  .stats-text {
+    color: rgb(156 163 175);
+  }
+}

@@ -1,0 +1,78 @@
+/* Custom toast styling */
+.toast-custom {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* Dark mode toast styling */
+@media (prefers-color-scheme: dark) {
+  .toast-custom {
+    background: #1f2937 !important;
+    color: #f9fafb !important;
+    border-color: #374151 !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Responsive toast container */
+@media (max-width: 640px) {
+  .toast-custom {
+    max-width: calc(100vw - 32px) !important;
+    margin-right: 16px;
+  }
+}
+
+/* Toast animation improvements */
+[data-sonner-toaster] {
+  --normal-bg: #ffffff;
+  --normal-border: #e5e7eb;
+  --normal-text: #1f2937;
+}
+
+/* Dark mode toast variables */
+@media (prefers-color-scheme: dark) {
+  [data-sonner-toaster] {
+    --normal-bg: #1f2937;
+    --normal-border: #374151;
+    --normal-text: #f9fafb;
+  }
+}
+
+/* Toast enter animation */
+[data-sonner-toast][data-styled] {
+  animation: toast-enter 0.3s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Better mobile toast positioning */
+@media (max-width: 768px) {
+  [data-sonner-toaster][data-x-position="right"] {
+    right: 8px !important;
+  }
+  
+  [data-sonner-toaster] {
+    bottom: 16px !important;
+  }
+}
+
+/* Enhanced toast positioning for bottom-right */
+[data-sonner-toaster][data-y-position="bottom"][data-x-position="right"] {
+  bottom: 16px !important;
+  right: 16px !important;
+}
+
+@media (max-width: 640px) {
+  [data-sonner-toaster][data-y-position="bottom"][data-x-position="right"] {
+    bottom: 12px !important;
+    right: 8px !important;
+  }
+}
